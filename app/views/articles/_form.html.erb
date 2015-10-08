@@ -18,7 +18,16 @@
         <div class="col-sm-8">
           <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Body of article" %>
         </div>
-      </div>  
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-offset-2 col-sm-8">
+            <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+              <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <%= f.submit class: 'btn btn-primary btn-lg' %>
