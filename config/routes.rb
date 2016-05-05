@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
   
-  root 'pages#home'
-  get 'about', to: 'pages#about'
+  devise_for :users
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+    get 'signup', to: 'devise/registrations#new'
+    get 'signout', to: 'devise/sessions#destroy'
+  end
+  root 'home#index'
+  resources :about do
+    collection do
+      get 'index'
+    end
+  end
   
   resources :articles
   
-  get 'signup', to: 'users#new'
+  get 'signup', to: 'users#signup'
   resources :users, except: [:new]
   
-  get 'login', to: 'sessions#new'
+  get 'login', to: 'devise/sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
