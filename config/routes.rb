@@ -12,6 +12,13 @@ Rails.application.routes.draw do
       get 'index'
     end
   end
+
+  resources :images do
+    collection do
+      get 'index'
+      post 'index'
+    end
+  end
   
   resources :articles
   
