@@ -13,7 +13,7 @@ development:
   adapter: mysql2
   database: alpha_blog
   username: root
-  password: identity@123
+  password: 
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
